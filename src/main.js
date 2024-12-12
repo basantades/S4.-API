@@ -24,11 +24,11 @@ function nextJoke() {
             const joke = data.joke;
             console.log(joke);
             const jokeDiv = document.getElementById('joke');
-            if (jokeDiv) {
+            if (jokeDiv instanceof HTMLElement) {
                 jokeDiv.innerHTML = joke;
             }
             else {
-                console.error('Element with ID "joke" not found');
+                console.error('Element with ID "joke" not found or is not a valid HTML element');
             }
         }
         catch (error) {
