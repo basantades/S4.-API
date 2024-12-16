@@ -87,3 +87,40 @@ function resetRating() {
         star.classList.remove('filled');
     });
 }
+//   Info meteorologica
+function infoMeteo() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const response = yield fetch('https://api.openweathermap.org/data/2.5/weather?q=Barcelona,es&appid=c886f446ea5439b937e65f2bfbd349c3&units=metric&lang=es', {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                },
+            });
+            if (!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}`);
+            }
+            const data = yield response.json();
+            console.log(data);
+            const info = document.querySelector('#infoMeteo');
+            const iconMeteo = document.querySelector('#iconMeteo');
+            if (iconMeteo instanceof HTMLElement) {
+                iconMeteo.innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="icono del clima">`;
+            }
+            else {
+                console.error('Element with ID "iconMeteo" not found or is not a valid HTML element');
+            }
+            if (info instanceof HTMLElement) {
+                info.innerHTML = `${data.name}: ${data.weather[0].description} <br>
+        ${parseInt(data.main.temp)}°C`;
+            }
+            else {
+                console.error('Element with ID "infoMeteo" not found or is not a valid HTML element');
+            }
+        }
+        catch (error) {
+            console.error('Error:', error);
+        }
+    });
+}
+infoMeteo();
