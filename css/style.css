@@ -50,7 +50,7 @@ body, html {
     align-items: center;
     font-size: 16px;
     color: #555;
-    margin: 50px 0;
+    margin-top: 50px;
     min-height: 54px;
   }
   
@@ -68,3 +68,31 @@ body, html {
   .card button:hover {
     background-color: #0097a7;
   }
+
+  .rating-container {
+    width: fit-content;
+    margin: 0 auto;
+    margin-bottom: 50px;
+  }
+
+  .star {
+    margin: 0 5px;
+    font-size: 40px;
+    color: #999999; 
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .rating-container:hover .star {
+    color: #f0a500; 
+  }
+
+.star[data-value="3"]:hover ~ .star,
+.star[data-value="2"]:hover ~ .star,
+.star[data-value="1"]:hover ~ .star {
+  color: #999999;
+}
+
+.star.filled {
+  color: #f0a500;
+}

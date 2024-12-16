@@ -8,8 +8,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+const stars = document.querySelectorAll('.star');
+let rating = 0;
+let actualJoke = '';
+const reportAcudits = [];
 function nextJoke() {
     return __awaiter(this, void 0, void 0, function* () {
+        resetRating();
         try {
             const response = yield fetch('https://icanhazdadjoke.com/', {
                 method: 'GET',
@@ -22,6 +27,7 @@ function nextJoke() {
             }
             const data = yield response.json(); // Parseas la respuesta como JSON
             const joke = data.joke;
+            actualJoke = joke;
             console.log(joke);
             const jokeDiv = document.getElementById('joke');
             if (jokeDiv instanceof HTMLElement) {
@@ -37,3 +43,47 @@ function nextJoke() {
     });
 }
 nextJoke();
+// Comportamiento estrellas valoracion:
+stars.forEach((star, index) => {
+    star.addEventListener('click', () => {
+        stars.forEach((s, i) => {
+            if (i <= index) {
+                s.innerHTML = '&#9733;';
+                s.classList.add('filled');
+            }
+            else {
+                s.innerHTML = '&#9734;';
+                s.classList.remove('filled');
+            }
+        });
+    });
+});
+function rateJoke(valor) {
+    rating = valor;
+    saveRating();
+}
+function saveRating() {
+    let guardado = false;
+    reportAcudits.forEach((acudit) => {
+        if (acudit.joke === actualJoke) {
+            acudit.score = rating;
+            acudit.date = new Date().toISOString();
+            guardado = true;
+        }
+    });
+    if (!guardado) {
+        reportAcudits.push({
+            joke: actualJoke,
+            score: rating,
+            date: new Date().toISOString()
+        });
+    }
+    console.log(reportAcudits);
+}
+function resetRating() {
+    rating = 0;
+    stars.forEach((star) => {
+        star.innerHTML = '&#9734;';
+        star.classList.remove('filled');
+    });
+}
