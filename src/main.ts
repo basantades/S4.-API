@@ -3,7 +3,8 @@ let rating: number = 0;
 let actualJoke: string = '';
 const reportAcudits: { joke: string, score: number, date: string }[] = [];
 
-async function nextJoke(): Promise<void> {
+
+async function nextJokeRandom(): Promise<void> {
     resetRating();
     try {
         const response = await fetch('https://icanhazdadjoke.com/', {
@@ -32,9 +33,46 @@ async function nextJoke(): Promise<void> {
         console.error('Error:', error); // Manejas errores
     }
   }
+
+  async function nextJokeChuck(): Promise<void> {
+    resetRating();
+    try {
+        const response = await fetch('https://api.chucknorris.io/jokes/random', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json', 
+            },
+        });
   
+        if (!response.ok) {
+            throw new Error(`Error HTTP: ${response.status}`);
+        }
+  
+        const data = await response.json(); 
+        const joke = data.value;
+        actualJoke = joke;
+        console.log(joke);
+  
+        const jokeDiv = document.getElementById('joke');
+        if (jokeDiv instanceof HTMLElement) {
+            jokeDiv.innerHTML = joke;
+        } else {
+            console.error('Element with ID "joke" not found or is not a valid HTML element');
+        }   
+        } catch (error) {
+        console.error('Error:', error); 
+    }
+  }
+  
+  function nextJoke() {
+    const random: number = Math.floor(Math.random() * 2 + 1);
+    if (random === 1) {
+        nextJokeRandom();
+    } else {
+        nextJokeChuck();
+    }
+  }
   nextJoke();
-  
 
 // Comportamiento estrellas valoracion:
 
@@ -103,13 +141,13 @@ async function infoMeteo(): Promise<void> {
     }
 
     const data = await response.json(); 
-    console.log(data);
 
     const info = document.querySelector('#infoMeteo');
     const iconMeteo = document.querySelector('#iconMeteo');
 
     if (iconMeteo instanceof HTMLElement) {
-        iconMeteo.innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="icono del clima">`;
+        iconMeteo.innerHTML = `<i class="wi wi-owm-${data.weather[0].id}"></i>`;
+        // iconMeteo.innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="icono del clima">`;
     } else {
         console.error('Element with ID "iconMeteo" not found or is not a valid HTML element');
     } 
