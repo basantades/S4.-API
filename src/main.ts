@@ -65,6 +65,7 @@ async function nextJokeRandom(): Promise<void> {
   }
   
   function nextJoke() {
+    aparicionBlobRandom();
     const random: number = Math.floor(Math.random() * 2 + 1);
     if (random === 1) {
         nextJokeRandom();
@@ -91,6 +92,13 @@ stars.forEach((star, index) => {
 });
 
 function rateJoke(valor: number) {
+    if (valor === 1) {
+        fondoEnfadado()
+    } else if (valor === 3) {
+        fondoContento()
+    } else {
+        fondoNeutro()
+    }
   rating = valor;
   saveRating()
 }
@@ -120,12 +128,40 @@ function resetRating() {
         star.innerHTML = '&#9734;';
         star.classList.remove('filled');
     });
+    fondoNeutro()
   }
+
+function fondoNeutro() {
+    const fondo = document.querySelector('.background');
+    fondo?.classList.remove('img-val-mala');
+    fondo?.classList.remove('img-val-buena');
+}
+
+function fondoEnfadado() {
+    const fondo = document.querySelector('.background');
+    fondo?.classList.remove('img-val-buena');
+    fondo?.classList.add('img-val-mala');
+}
+
+function fondoContento() {
+    const fondo = document.querySelector('.background');
+    fondo?.classList.remove('img-val-mala');
+    fondo?.classList.add('img-val-buena');
+}
+
+
+function aparicionBlobRandom() {
+    const random: number = Math.floor(Math.random() * 6 + 1);
+    console.log(random);
+    const blob = document.getElementById('blob');
+    blob?.classList.remove('blob-1', 'blob-2', 'blob-3', 'blob-4', 'blob-5', 'blob-6', 'animacion-blob');
+    void blob?.offsetWidth; 
+    blob?.classList.add(`blob-${random}`, 'animacion-blob');
+    blob?.classList.toggle('flip');
+}
 
 
 //   Info meteorologica
-
-
 
 async function infoMeteo(): Promise<void> {
     try {

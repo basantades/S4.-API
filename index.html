@@ -7,14 +7,20 @@
     <meta name="keywords" content="Javascript, API, CSS, HTML, frontend" />
     <meta name="description" content="Curso IT academy frontend" />
     <title>Sprint 4 API joke</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="preload" href="images/fondo-chuck-cabreado.webp" as="image">
+    <link rel="preload" href="images/fondo-chuck-happy.webp" as="image">
+    <link rel="preload" href="images/fondo-chuck-mob.webp" as="image">
+    <link rel="preload" href="images/fondo-chuck-cabreado-mob.webp" as="image">
+    <link rel="preload" href="images/fondo-chuck-happy-mob.webp" as="image">
 </head>
 <body>
+    <header class="info">
+        <div id="iconMeteo"></div>
+        <div id="infoMeteo">Avui: parcialment ennuvolat</div>
+    </header>
     <div class="background">
-        <header class="info">
-            <div id="iconMeteo"></div>
-            <div id="infoMeteo">Avui: parcialment ennuvolat</div>
-        </header>
         <div class="card">
             <h1>Preparat per riure? 🤣</h1>
             <div id="joke">...</div>
@@ -27,8 +33,10 @@
             </div>
             <button onclick="nextJoke()">Següent acudit</button>
         </div>
-      </div>
-
+        <div id="blob-container">
+        <div id="blob" class="blob-1"></div>
+        </div>
+    </div>
     <script src="src/main.js"></script>
 </body>
 </html>

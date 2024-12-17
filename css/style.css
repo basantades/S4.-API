@@ -1,4 +1,5 @@
 body, html {
+    position: relative;
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
@@ -8,24 +9,52 @@ body, html {
   
   .background {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    overflow: hidden;
     height: 100vh;
-    background-image: url('../images/happy-people.webp');
-    background-size: contain;
+    max-height: 100vh;
+    background-image: url('../images/fondo-chuck.webp');
+    background-size: cover;
     background-repeat: no-repeat; 
-    background-position: bottom center;
+    background-position: top center;
   }
+
+@media screen and (max-width: 1000px) {
+    .background {
+        background-position: top left;
+    }
+}
+
+.img-val-mala {
+    background-image: url('../images/fondo-chuck-cabreado.webp');
+  }
+  
+.img-val-buena {
+    background-image: url('../images/fondo-chuck-happy.webp');
+  }
+
+@media screen and (max-width: 800px) {
+    .background {
+        height: calc(100vh - 57px);
+        background-position: top center;
+        background-image: url('../images/fondo-chuck-mob.webp');
+    }
+    .img-val-mala {
+        background-image: url('../images/fondo-chuck-cabreado-mob.webp');
+    }
+      
+    .img-val-buena {
+        background-image: url('../images/fondo-chuck-happy-mob.webp');
+    }
+}
   
   .info {
     position: absolute;
+    z-index: 100;
     display: flex;
     align-items: center;
     top: 20px;
-    left: 20px;
-    color: #808080;
+    right: 20px;
+    color: #fff;
   }
   #infoMeteo {
     font-size: 14px;
@@ -34,18 +63,53 @@ body, html {
     font-size: 32px;
     margin-right: 10px;
   }
+
+  @media screen and (max-width: 800px) {
+    .info {
+        position: static;
+        justify-content: center;
+        background-color: #111111;
+        padding: 10px;
+    }
+  }
   
   
   .card {
     text-align: center;
-    background: #fff;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    padding: 50px 5%;
-    width: 70%;
-    max-width: 600px;
-    margin-bottom: 100px;
+    position: absolute;
+    z-index: 5;
+    top: 60%;          
+    left: 70%;        
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 55%;
+    max-width: 500px;
   }
+  @media screen and (max-width: 1000px) {
+    .card {
+        gap: 0;
+        bottom: 5%;          
+        left: 50%;          
+        transform: translate(-50%, 0);
+        width: 70%;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    .card {
+        width: 80%;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .card {
+        width: 90%;
+    }
+  }
+  
   
   h1 {
     font-size: 24px;
@@ -58,7 +122,7 @@ body, html {
     align-items: center;
     font-size: 16px;
     color: #555;
-    margin-top: 50px;
+    margin-top: 30px;
     min-height: 54px;
   }
   
@@ -70,7 +134,7 @@ body, html {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.5s ease;
   }
   
   .card button:hover {
@@ -80,7 +144,7 @@ body, html {
   .rating-container {
     width: fit-content;
     margin: 0 auto;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
 
   .star {
@@ -88,7 +152,6 @@ body, html {
     font-size: 40px;
     color: #999999; 
     cursor: pointer;
-    transition: color 0.3s ease;
   }
   
   .rating-container:hover .star {
@@ -104,3 +167,79 @@ body, html {
 .star.filled {
   color: #f0a500;
 }
+
+#blob-container {
+    position: absolute;
+    z-index: 1;
+    top: 60%;          
+    left: 70%;          
+    transform: translate(-50%, -50%);
+    width: 65vw;
+    height: 86%;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 1000px) {
+  #blob-container {
+      gap: 0;
+      top: 80%;          
+      left: 50%;          
+      transform: translate(-50%, -50%);
+      width: 150%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #blob-container {
+      width: 200%;
+  }
+}
+
+#blob {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.flip {
+  transform: scaleX(-1) rotate(180deg);
+}
+
+
+  .blob-1 { 
+    background-image: url("data:image/svg+xml;utf8,%3Csvg viewBox=%220 0 1000 1000%22 xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3CclipPath id=%22b%22%3E%3Cpath fill=%22currentColor%22 d=%22M929 643q-36 143-167 201t-252 28q-121-30-244-71.5t-128.5-171Q132 500 140 372t128.5-170.5Q389 159 512.5 120t243 34Q875 227 920 363.5t9 279.5Z%22%2F%3E%3C%2FclipPath%3E%3Cfilter id=%22a%22 x=%22-50vw%22 y=%22-50vh%22 width=%22100vw%22 height=%22100vh%22%3E%3CfeFlood flood-color=%22%23fff%22 result=%22neutral-gray%22%2F%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%222.5%22 numOctaves=%22100%22 stitchTiles=%22stitch%22 result=%22noise%22%2F%3E%3CfeColorMatrix in=%22noise%22 type=%22saturate%22 values=%220%22 result=%22destaturatedNoise%22%2F%3E%3CfeComponentTransfer in=%22desaturatedNoise%22 result=%22theNoise%22%3E%3CfeFuncA type=%22table%22 tableValues=%220 0 0.5 0%22%2F%3E%3C%2FfeComponentTransfer%3E%3CfeBlend in=%22SourceGraphic%22 in2=%22theNoise%22 mode=%22soft-light%22 result=%22noisy-image%22%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3Cg filter=%22url(%23a)%22 clip-path=%22url(%23b)%22%3E%3Cpath fill=%22%23fff%22 d=%22M929 643q-36 143-167 201t-252 28q-121-30-244-71.5t-128.5-171Q132 500 140 372t128.5-170.5Q389 159 512.5 120t243 34Q875 227 920 363.5t9 279.5Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  }
+  .blob-2 { 
+    background-image: url("data:image/svg+xml;utf8,%3Csvg viewBox=%220 0 1000 1000%22 xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3CclipPath id=%22b%22%3E%3Cpath fill=%22currentColor%22 d=%22M883 642q8 142-112 232t-265 71.5Q361 927 240 852T75.5 638.5Q32 500 65.5 354T229 137.5Q359 67 499 70t227.5 102.5Q814 272 844.5 386T883 642Z%22%2F%3E%3C%2FclipPath%3E%3Cfilter id=%22a%22 x=%22-50vw%22 y=%22-50vh%22 width=%22100vw%22 height=%22100vh%22%3E%3CfeFlood flood-color=%22%23fff%22 result=%22neutral-gray%22%2F%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%222.5%22 numOctaves=%22100%22 stitchTiles=%22stitch%22 result=%22noise%22%2F%3E%3CfeColorMatrix in=%22noise%22 type=%22saturate%22 values=%220%22 result=%22destaturatedNoise%22%2F%3E%3CfeComponentTransfer in=%22desaturatedNoise%22 result=%22theNoise%22%3E%3CfeFuncA type=%22table%22 tableValues=%220 0 0.5 0%22%2F%3E%3C%2FfeComponentTransfer%3E%3CfeBlend in=%22SourceGraphic%22 in2=%22theNoise%22 mode=%22soft-light%22 result=%22noisy-image%22%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3Cg filter=%22url(%23a)%22 clip-path=%22url(%23b)%22%3E%3Cpath fill=%22%23fff%22 d=%22M883 642q8 142-112 232t-265 71.5Q361 927 240 852T75.5 638.5Q32 500 65.5 354T229 137.5Q359 67 499 70t227.5 102.5Q814 272 844.5 386T883 642Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  }
+  .blob-3 { 
+    background-image: url("data:image/svg+xml;utf8,%3Csvg viewBox=%220 0 1000 1000%22 xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3CclipPath id=%22b%22%3E%3Cpath fill=%22currentColor%22 d=%22M870 617q-48 117-150.5 180.5T499 863q-118 2-259.5-34.5T53 646Q8 500 68 365t177.5-210.5Q363 79 503 69t263 69.5Q889 218 903.5 359T870 617Z%22%2F%3E%3C%2FclipPath%3E%3Cfilter id=%22a%22 x=%22-50vw%22 y=%22-50vh%22 width=%22100vw%22 height=%22100vh%22%3E%3CfeFlood flood-color=%22%23fff%22 result=%22neutral-gray%22%2F%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%222.5%22 numOctaves=%22100%22 stitchTiles=%22stitch%22 result=%22noise%22%2F%3E%3CfeColorMatrix in=%22noise%22 type=%22saturate%22 values=%220%22 result=%22destaturatedNoise%22%2F%3E%3CfeComponentTransfer in=%22desaturatedNoise%22 result=%22theNoise%22%3E%3CfeFuncA type=%22table%22 tableValues=%220 0 0.5 0%22%2F%3E%3C%2FfeComponentTransfer%3E%3CfeBlend in=%22SourceGraphic%22 in2=%22theNoise%22 mode=%22soft-light%22 result=%22noisy-image%22%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3Cg filter=%22url(%23a)%22 clip-path=%22url(%23b)%22%3E%3Cpath fill=%22%23fff%22 d=%22M870 617q-48 117-150.5 180.5T499 863q-118 2-259.5-34.5T53 646Q8 500 68 365t177.5-210.5Q363 79 503 69t263 69.5Q889 218 903.5 359T870 617Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  }
+  .blob-4 { 
+    background-image: url("data:image/svg+xml;utf8,%3Csvg viewBox=%220 0 1000 1000%22 xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3CclipPath id=%22b%22%3E%3Cpath fill=%22currentColor%22 d=%22M940.5 641q-52.5 141-178 210.5t-266 81Q356 944 245 855T87 633q-47-133-7.5-271.5T239 145q120-78 247.5-37T758 178.5Q902 208 947.5 354t-7 287Z%22%2F%3E%3C%2FclipPath%3E%3Cfilter id=%22a%22 x=%22-50vw%22 y=%22-50vh%22 width=%22100vw%22 height=%22100vh%22%3E%3CfeFlood flood-color=%22%23fff%22 result=%22neutral-gray%22%2F%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%222.5%22 numOctaves=%22100%22 stitchTiles=%22stitch%22 result=%22noise%22%2F%3E%3CfeColorMatrix in=%22noise%22 type=%22saturate%22 values=%220%22 result=%22destaturatedNoise%22%2F%3E%3CfeComponentTransfer in=%22desaturatedNoise%22 result=%22theNoise%22%3E%3CfeFuncA type=%22table%22 tableValues=%220 0 0.5 0%22%2F%3E%3C%2FfeComponentTransfer%3E%3CfeBlend in=%22SourceGraphic%22 in2=%22theNoise%22 mode=%22soft-light%22 result=%22noisy-image%22%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3Cg filter=%22url(%23a)%22 clip-path=%22url(%23b)%22%3E%3Cpath fill=%22%23fff%22 d=%22M940.5 641q-52.5 141-178 210.5t-266 81Q356 944 245 855T87 633q-47-133-7.5-271.5T239 145q120-78 247.5-37T758 178.5Q902 208 947.5 354t-7 287Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  }
+  .blob-5 { 
+    background-image: url("data:image/svg+xml;utf8,%3Csvg viewBox=%220 0 1000 1000%22 xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3CclipPath id=%22b%22%3E%3Cpath fill=%22currentColor%22 d=%22M873.5 603Q783 706 708 807.5T495.5 923q-137.5 14-264-61t-158-218.5Q42 500 96 373t152.5-234.5Q347 31 485.5 75t277 89q138.5 45 170 190.5t-59 248.5Z%22%2F%3E%3C%2FclipPath%3E%3Cfilter id=%22a%22 x=%22-50vw%22 y=%22-50vh%22 width=%22100vw%22 height=%22100vh%22%3E%3CfeFlood flood-color=%22%23fff%22 result=%22neutral-gray%22%2F%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%222.5%22 numOctaves=%22100%22 stitchTiles=%22stitch%22 result=%22noise%22%2F%3E%3CfeColorMatrix in=%22noise%22 type=%22saturate%22 values=%220%22 result=%22destaturatedNoise%22%2F%3E%3CfeComponentTransfer in=%22desaturatedNoise%22 result=%22theNoise%22%3E%3CfeFuncA type=%22table%22 tableValues=%220 0 0.5 0%22%2F%3E%3C%2FfeComponentTransfer%3E%3CfeBlend in=%22SourceGraphic%22 in2=%22theNoise%22 mode=%22soft-light%22 result=%22noisy-image%22%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3Cg filter=%22url(%23a)%22 clip-path=%22url(%23b)%22%3E%3Cpath fill=%22%23fff%22 d=%22M873.5 603Q783 706 708 807.5T495.5 923q-137.5 14-264-61t-158-218.5Q42 500 96 373t152.5-234.5Q347 31 485.5 75t277 89q138.5 45 170 190.5t-59 248.5Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  }
+  .blob-6 { 
+    background-image: url("data:image/svg+xml;utf8,%3Csvg viewBox=%220 0 1000 1000%22 xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3CclipPath id=%22b%22%3E%3Cpath fill=%22currentColor%22 d=%22M888.5 622Q836 744 744 856T499.5 969q-152.5 1-261-99.5T72 634.5Q14 500 100 386t170-224.5Q354 51 489 84t220 117.5Q794 286 867.5 393t21 229Z%22%2F%3E%3C%2FclipPath%3E%3Cfilter id=%22a%22 x=%22-50vw%22 y=%22-50vh%22 width=%22100vw%22 height=%22100vh%22%3E%3CfeFlood flood-color=%22%23fff%22 result=%22neutral-gray%22%2F%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%222.5%22 numOctaves=%22100%22 stitchTiles=%22stitch%22 result=%22noise%22%2F%3E%3CfeColorMatrix in=%22noise%22 type=%22saturate%22 values=%220%22 result=%22destaturatedNoise%22%2F%3E%3CfeComponentTransfer in=%22desaturatedNoise%22 result=%22theNoise%22%3E%3CfeFuncA type=%22table%22 tableValues=%220 0 0.5 0%22%2F%3E%3C%2FfeComponentTransfer%3E%3CfeBlend in=%22SourceGraphic%22 in2=%22theNoise%22 mode=%22soft-light%22 result=%22noisy-image%22%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3Cg filter=%22url(%23a)%22 clip-path=%22url(%23b)%22%3E%3Cpath fill=%22%23fff%22 d=%22M888.5 622Q836 744 744 856T499.5 969q-152.5 1-261-99.5T72 634.5Q14 500 100 386t170-224.5Q354 51 489 84t220 117.5Q794 286 867.5 393t21 229Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  }
+
+  .animacion-blob {
+    opacity: 0;
+    transform: scale(0.4);
+    animation: fadeSlideIn 0.5s ease-out forwards; 
+  }
+  
+  @keyframes fadeSlideIn {
+    from {
+      opacity: 0;
+      transform: scale(0.4); 
+    }
+    to {
+      opacity: 0.85;
+      transform: scale(1);
+    }
+  }
