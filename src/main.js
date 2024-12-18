@@ -153,10 +153,9 @@ function fondoContento() {
     fondo === null || fondo === void 0 ? void 0 : fondo.classList.add('img-val-buena');
 }
 function aparicionBlobRandom() {
-    const random = Math.floor(Math.random() * 6 + 1);
-    console.log(random);
+    const random = Math.floor(Math.random() * 10 + 1);
     const blob = document.getElementById('blob');
-    blob === null || blob === void 0 ? void 0 : blob.classList.remove('blob-1', 'blob-2', 'blob-3', 'blob-4', 'blob-5', 'blob-6', 'animacion-blob');
+    blob === null || blob === void 0 ? void 0 : blob.classList.remove('blob-1', 'blob-2', 'blob-3', 'blob-4', 'blob-5', 'blob-6', 'blob-7', 'blob-8', 'blob-9', 'blob-10', 'animacion-blob');
     void (blob === null || blob === void 0 ? void 0 : blob.offsetWidth);
     blob === null || blob === void 0 ? void 0 : blob.classList.add(`blob-${random}`, 'animacion-blob');
     blob === null || blob === void 0 ? void 0 : blob.classList.toggle('flip');

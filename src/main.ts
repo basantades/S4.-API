@@ -151,10 +151,9 @@ function fondoContento() {
 
 
 function aparicionBlobRandom() {
-    const random: number = Math.floor(Math.random() * 6 + 1);
-    console.log(random);
+    const random: number = Math.floor(Math.random() * 10 + 1);
     const blob = document.getElementById('blob');
-    blob?.classList.remove('blob-1', 'blob-2', 'blob-3', 'blob-4', 'blob-5', 'blob-6', 'animacion-blob');
+    blob?.classList.remove('blob-1', 'blob-2', 'blob-3', 'blob-4', 'blob-5', 'blob-6', 'blob-7', 'blob-8', 'blob-9', 'blob-10', 'animacion-blob');
     void blob?.offsetWidth; 
     blob?.classList.add(`blob-${random}`, 'animacion-blob');
     blob?.classList.toggle('flip');
