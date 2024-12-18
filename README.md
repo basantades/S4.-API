@@ -52,11 +52,6 @@ cd S4.-API
 npm install
 ```
 
-**✔️ Paso 4:** Compila el código TypeScript a JavaScript:
-```bash
-npm run build
-```
-
 ## ▶️ Ejecución
 
 - Abre el archivo **index.html** en tu navegador para visualizar la aplicación.
