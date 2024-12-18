@@ -6,14 +6,12 @@
 
 ## 📄 Descripción
 
-Este repositorio implementa una aplicación web interactiva desarrollada con **TypeScript** que realiza llamadas a diferentes APIs externas. La aplicación obtiene datos de **chistes** (incluyendo la API de Chuck Norris) y muestra información meteorológica en tiempo real para la ciudad de **Barcelona**.
+Este repositorio implementa una aplicación web interactiva desarrollada con **TypeScript** que realiza llamadas a diferentes APIs externas. La aplicación obtiene datos de **chistes** (mezclando chistes de Chuck Norris y genéricos) y muestra información meteorológica en tiempo real para la ciudad de **Barcelona**.
 
 ## ✨ Características
 
-- **Chistes Aleatorios**: Obtención de chistes de varias fuentes de APIs, como:
-  - API de Chuck Norris (*https://api.chucknorris.io*).
-  - Otras APIs de chistes generales.
-- **Clima Actual**: Conexión a una API meteorológica para mostrar el clima actual en Barcelona (temperatura, estado del tiempo, etc.).
+- **Chistes Aleatorios**: Obtención de chistes de 2 fuentes de APIs (*https://api.chucknorris.io* y *https://icanhazdadjoke.com/*).
+- **Clima Actual**: Conexión a una API meteorológica (*https://openweathermap.org/*) para mostrar el clima actual en Barcelona (estado del tiempo y temperatura).
 - **Interfaz Dinámica**: Visualización de datos en la interfaz de usuario de forma interactiva y clara.
 - **Uso de TypeScript**: Implementación estricta con **TypeScript** para un código más robusto y mantenible.
 
@@ -26,9 +24,9 @@ Este repositorio implementa una aplicación web interactiva desarrollada con **T
 
 ## 🌐 APIs Utilizadas
 
-1. **API de Chuck Norris**: https://api.chucknorris.io
-2. **API Meteorológica**: OpenWeatherMap (u otra API similar utilizada).
-3. **Otras APIs de chistes** (se pueden especificar más detalles).
+1. **API de Chuck Norris**: *https://api.chucknorris.io*
+2. **API de chistes icanhazdadjoke**: *https://icanhazdadjoke.com/*
+3. **API Meteorológica**: *https://openweathermap.org/*
 
 ## 📋 Requisitos
 
